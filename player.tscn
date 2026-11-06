@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dkp8cttdqnqug"]
+
+[ext_resource type="Texture2D" uid="uid://cob3t1xcniocb" path="res://sprites/Knight.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://buedb2kbm3pnh" path="res://player.gd" id="1_onrkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82avs"]
+radius = 81.0
+height = 291.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i3pqv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" unique_id=1064885369]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1064446105]
+position = Vector2(-7, 13.5)
+shape = SubResource("CapsuleShape2D_82avs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=309568270]
+position = Vector2(-23, -1)
+texture = ExtResource("1_4flbx")
+offset = Vector2(20, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1787560954]
+replication_config = SubResource("SceneReplicationConfig_i3pqv")
