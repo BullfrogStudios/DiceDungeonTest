@@ -2,28 +2,49 @@
 
 [ext_resource type="Texture2D" uid="uid://cob3t1xcniocb" path="res://sprites/Knight.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://buedb2kbm3pnh" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cypthh2o1aydx" path="res://sprites/PlayerIndicatorTest.png" id="3_i3pqv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82avs"]
-radius = 81.0
-height = 291.0
+radius = 37.5
+height = 129.99998
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i3pqv"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("ActionHandler:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" unique_id=1064885369]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_onrkg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1064446105]
-position = Vector2(-7, 13.5)
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1064446105]
+position = Vector2(0, 137.5)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_82avs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=309568270]
-position = Vector2(-23, -1)
+position = Vector2(-11, -1)
 texture = ExtResource("1_4flbx")
 offset = Vector2(20, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1787560954]
 replication_config = SubResource("SceneReplicationConfig_i3pqv")
+
+[node name="ActionHandler" type="Node2D" parent="." unique_id=629156802]
+position = Vector2(0, 140)
+
+[node name="Indicator" type="Sprite2D" parent="ActionHandler" unique_id=1052692552]
+position = Vector2(100, 0)
+texture = ExtResource("3_i3pqv")
+region_enabled = true
+region_rect = Rect2(127.20003, 92.799995, 59.99997, 51.999992)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=212404453]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1365242583]
+position = Vector2(0, 137.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_82avs")
