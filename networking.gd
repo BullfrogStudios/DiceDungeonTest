@@ -11,6 +11,7 @@ func _ready() -> void:
 	Steam.initRelayNetworkAccess()
 	Steam.lobby_created.connect(on_lobby_created)
 	Steam.lobby_joined.connect(on_lobby_joined)
+	Steam.join_requested.connect(on_join_requested)
 
 
 func _process(delta: float) -> void:
