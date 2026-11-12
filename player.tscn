@@ -17,7 +17,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" unique_id=1064885369]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1064446105]
